@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dennis Bijo</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FAF8F4;
+  --warm:#FFFCF8;
+  --sand:#EDE7DB;
+  --rust:#B85C38;
+  --rust-light:#D4795A;
+  --rust-pale:#F5EBE5;
+  --green:#3D5944;
+  --green-pale:#E8EDE9;
+  --ink:#1C1916;
+  --ink-mid:#6B6158;
+  --ink-soft:#A09488;
+  --line:rgba(100,88,78,0.13);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:16px;line-height:1.75;overflow-x:hidden}
+
+nav{
+  padding:0 2.5rem;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line);
+  background:rgba(250,248,244,0.95);
+  position:sticky;top:0;z-index:50;
+}
+.logo{font-family:'Lora',serif;font-size:17px;color:var(--ink);text-decoration:none;font-weight:600}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{font-size:14px;color:var(--ink-mid);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--rust)}
+.nav-btn{
+  background:var(--rust);color:white !important;
+  padding:7px 18px;border-radius:100px;
+  font-size:13px !important;transition:background .2s !important;
+}
+.nav-btn:hover{background:#9A4A2C !important;color:white !important}
+
+.hero{
+  max-width:980px;margin:0 auto;
+  padding:5rem 2.5rem 4rem;
+}
+.hero-intro{
+  font-size:14px;color:var(--ink-soft);
+  letter-spacing:0.04em;margin-bottom:1.5rem;
+}
+.hero h1{
+  font-family:'Lora',serif;
+  font-size:clamp(34px,5vw,58px);
+  line-height:1.18;font-weight:600;
+  color:var(--ink);margin-bottom:1.75rem;
+  max-width:700px;
+}
+.hero h1 em{color:var(--rust);font-style:italic}
+.hero-body{
+  font-size:17px;color:var(--ink-mid);
+  max-width:560px;line-height:1.8;
+  margin-bottom:2rem;
+}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:3rem}
+.btn{
+  padding:12px 24px;border-radius:100px;
+  font-size:14px;font-weight:500;
+  text-decoration:none;display:inline-block;transition:all .18s;
+}
+.btn-fill{background:var(--rust);color:white}
+.btn-fill:hover{background:#9A4A2C;transform:translateY(-1px)}
+.btn-ghost{
+  background:transparent;color:var(--ink);
+  border:1.5px solid var(--line);
+}
+.btn-ghost:hover{border-color:var(--rust-light);background:var(--rust-pale)}
+
+.hero-strip{
+  display:flex;gap:2.5rem;
+  padding-top:2rem;
+  border-top:1px solid var(--line);
+}
+.hero-strip-item strong{
+  font-family:'Lora',serif;
+  font-size:26px;display:block;color:var(--ink)
+}
+.hero-strip-item span{font-size:13px;color:var(--ink-soft)}
+
+.divider{max-width:980px;margin:0 auto;padding:0 2.5rem;height:1px;background:var(--line)}
+
+.about{
+  max-width:980px;margin:0 auto;
+  padding:5rem 2.5rem;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:start;
+}
+.section-label{
+  font-size:12px;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--rust);
+  margin-bottom:1rem;display:block;font-weight:500;
+}
+.section-h{
+  font-family:'Lora',serif;
+  font-size:clamp(26px,3.5vw,38px);
+  font-weight:600;line-height:1.25;
+  margin-bottom:1.25rem;color:var(--ink);
+}
+.about-body{font-size:15px;color:var(--ink-mid);line-height:1.85;margin-bottom:0.85rem}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:1.25rem}
+.tag{
+  font-size:12px;padding:5px 12px;
+  border-radius:100px;background:var(--sand);
+  color:var(--ink-mid);border:1px solid transparent;
+  transition:all .18s;cursor:default;
+}
+.tag:hover{border-color:var(--rust-light);color:var(--rust)}
+
+.about-cards{display:flex;flex-direction:column;gap:12px}
+.acard{
+  padding:1.1rem 1.25rem;
+  border:1px solid var(--line);
+  border-radius:14px;background:var(--warm);
+  transition:border-color .2s;
+}
+.acard:hover{border-color:var(--rust-light)}
+.acard h4{font-size:14px;font-weight:500;margin-bottom:4px}
+.acard p{font-size:13px;color:var(--ink-mid);line-height:1.65}
+
+.services-section{background:var(--ink);padding:5rem 2.5rem}
+.services-inner{max-width:980px;margin:0 auto}
+.services-top{
+  display:flex;justify-content:space-between;
+  align-items:flex-end;margin-bottom:2.5rem;
+}
+.services-section .section-label{color:#D4795A}
+.services-section .section-h{color:white;margin-bottom:0}
+.services-section .section-h em{color:#D4795A;font-style:italic}
+.services-note{font-size:14px;color:rgba(255,255,255,0.4);max-width:280px;text-align:right;line-height:1.7}
+.s-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.scard{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.09);
+  border-radius:18px;padding:1.75rem;
+  transition:all .2s;
+}
+.scard:hover{background:rgba(255,255,255,0.07);border-color:rgba(184,92,56,0.35);transform:translateY(-3px)}
+.scard-num{font-family:'Lora',serif;font-size:36px;color:rgba(255,255,255,0.06);margin-bottom:-6px}
+.scard h3{font-size:17px;font-weight:500;color:white;margin-bottom:0.6rem}
+.scard p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:1rem}
+.scard-price{font-size:12px;color:#D4795A;font-weight:500}
+.scard-link{
+  display:block;
+  font-size:12px;font-weight:500;
+  color:rgba(255,255,255,0.4);
+  text-decoration:none;
+  border-top:1px solid rgba(255,255,255,0.07);
+  padding-top:0.85rem;margin-top:0.85rem;
+  transition:color .2s;
+}
+.scard-link:hover{color:#D4795A}
+
+.community{max-width:980px;margin:0 auto;padding:5rem 2.5rem}
+.community-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.community-body{font-size:15px;color:var(--ink-mid);line-height:1.85;margin-bottom:1rem}
+.talks{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem}
+.talk{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:0.9rem 1.1rem;
+  border:1px solid var(--line);
+  border-radius:12px;background:var(--warm);
+  transition:border-color .2s;
+}
+.talk:hover{border-color:var(--rust-light)}
+.talk-dot{
+  width:8px;height:8px;
+  border-radius:50%;background:var(--rust);
+  flex-shrink:0;margin-top:6px;
+}
+.talk-conf{font-size:11px;color:var(--rust);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:2px}
+.talk-title{font-size:13px;font-weight:500;margin-bottom:2px}
+.talk-meta{font-size:11px;color:var(--ink-soft)}
+
+.com-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1.5rem}
+.cstat{
+  background:var(--sand);
+  border-radius:16px;padding:1.25rem;
+  text-align:center;
+}
+.cstat.wide{grid-column:1/-1;display:flex;gap:1.25rem;align-items:center;text-align:left}
+.cstat .n{font-family:'Lora',serif;font-size:32px;color:var(--rust);font-weight:600}
+.cstat.wide .n{font-size:44px}
+.cstat .l{font-size:12px;color:var(--ink-mid);margin-top:3px}
+.cstat.wide .l strong{display:block;font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px}
+
+.blog-section{background:var(--sand);padding:5rem 2.5rem}
+.blog-inner{max-width:980px;margin:0 auto}
+.blog-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem}
+.blog-top a{font-size:13px;color:var(--rust);text-decoration:none;font-weight:500}
+.blog-top a:hover{text-decoration:underline}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.bcard{
+  background:var(--warm);
+  border:1px solid var(--line);
+  border-radius:18px;overflow:hidden;
+  transition:all .2s;cursor:pointer;
+}
+.bcard:hover{transform:translateY(-3px);border-color:var(--rust-light)}
+.bthumb{
+  height:130px;display:flex;
+  align-items:center;justify-content:center;
+  font-size:36px;
+}
+.t1{background:#E3EDE6}
+.t2{background:#EEE3D9}
+.t3{background:#DDE8EF}
+.bbody{padding:1.1rem}
+.bcat{font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--rust);margin-bottom:6px}
+.bcard h3{font-size:14px;font-weight:500;line-height:1.45;margin-bottom:6px}
+.bcard p{font-size:12px;color:var(--ink-mid);line-height:1.6;margin-bottom:10px}
+.bread{font-size:12px;color:var(--rust)}
+
+.cta-wrap{max-width:980px;margin:0 auto;padding:5rem 2.5rem}
+.cta-box{
+  background:var(--rust);
+  border-radius:28px;padding:3.5rem;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-box::before{
+  content:'';position:absolute;
+  top:-80px;right:-80px;
+  width:280px;height:280px;
+  background:rgba(255,255,255,0.06);
+  border-radius:50%;
+}
+.cta-box *{position:relative;z-index:1}
+.cta-box h2{
+  font-family:'Lora',serif;
+  font-size:clamp(26px,4vw,38px);
+  color:white;font-weight:600;
+  margin-bottom:0.85rem;
+}
+.cta-box p{font-size:15px;color:rgba(255,255,255,0.72);max-width:440px;margin:0 auto 1.75rem;line-height:1.75}
+.btn-white{
+  background:white;color:var(--rust);
+  padding:13px 30px;border-radius:100px;
+  font-size:14px;font-weight:500;
+  text-decoration:none;display:inline-block;
+  transition:transform .15s;
+}
+.btn-white:hover{transform:translateY(-2px)}
+
+footer{background:var(--ink);padding:2.5rem;text-align:center}
+.footer-name{font-family:'Lora',serif;font-size:17px;color:white;margin-bottom:1rem}
+.footer-links{display:flex;justify-content:center;gap:2rem;margin-bottom:1.25rem}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:#D4795A}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.2)}
+
+@media(max-width:720px){
+  .about,.community-grid,.s-grid,.blog-grid{grid-template-columns:1fr}
+  .services-top{flex-direction:column;align-items:flex-start;gap:0.75rem}
+  .services-note{text-align:left}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Dennis Bijo</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#community">Speaking</a></li>
+    <li><a href="#blog">Writing</a></li>
+    <li><a href="#contact" class="nav-btn">Say hello</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <p class="hero-intro">Hey, I'm Dennis 👋</p>
+  <h1>I write code, mentor engineers, and <em>genuinely love</em> the people side of tech.</h1>
+  <p class="hero-body">I've been building software for 8+ years — and somewhere along the way, realised that helping engineers grow was just as satisfying as shipping features. So I do both now.</p>
+  <div class="hero-actions">
+    <a href="#services" class="btn btn-fill">See how I can help</a>
+    <a href="#about" class="btn btn-ghost">A bit about me</a>
+  </div>
+  <div class="hero-strip">
+    <div class="hero-strip-item"><strong>8 yrs</strong><span>in engineering</span></div>
+    <div class="hero-strip-item"><strong>120+</strong><span>engineers mentored</span></div>
+    <div class="hero-strip-item"><strong>15+</strong><span>talks given</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="about" id="about">
+  <div>
+    <span class="section-label">About me</span>
+    <h2 class="section-h">Not just a coder who also mentors.</h2>
+    <p class="about-body">I've worked across startups and big teams, worn a lot of hats, and made a lot of mistakes — the good kind. The kind that teach you things textbooks skip over.</p>
+    <p class="about-body">These days I split my time between consulting on technical problems, doing 1:1 mentorship with engineers figuring out their next move, and building communities where people actually talk to each other honestly.</p>
+    <p class="about-body">I'm based in the UK, but work with people everywhere.</p>
+    <div class="tags">
+      <span class="tag">System design</span>
+      <span class="tag">Career strategy</span>
+      <span class="tag">Team leadership</span>
+      <span class="tag">Full-stack</span>
+      <span class="tag">Engineering culture</span>
+      <span class="tag">Distributed systems</span>
+      <span class="tag">Public speaking</span>
+    </div>
+  </div>
+  <div class="about-cards">
+    <div class="acard">
+      <h4>I'll be straight with you</h4>
+      <p>No sugar-coating. If something isn't working, I'll say so — kindly, but clearly. Most people find that more useful than reassurance.</p>
+    </div>
+    <div class="acard">
+      <h4>Tech should be more open</h4>
+      <p>I've benefited from people who shared their knowledge freely. I try to do the same.</p>
+    </div>
+    <div class="acard">
+      <h4>It's not just about code</h4>
+      <p>The stuff that really holds engineers back is rarely technical. It's confidence, politics, communication, timing. That's where I spend a lot of our time.</p>
+    </div>
+    <div class="acard">
+      <h4>I like this work</h4>
+      <p>Genuinely. The moment someone gets a promotion they didn't think was possible, or ships something they're proud of — that doesn't get old.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="services-section" id="services">
+  <div class="services-inner">
+    <div class="services-top">
+      <div>
+        <span class="section-label">Working together</span>
+        <h2 class="section-h">A few ways I can <em>help</em></h2>
+      </div>
+      <p class="services-note">Pick what fits your situation, or just drop me a message and we'll figure it out.</p>
+    </div>
+    <div class="s-grid">
+      <div class="scard">
+        <div class="scard-num">01</div>
+        <h3>Technical consulting</h3>
+        <p>Architecture reviews, tech strategy, and getting hands-on when a team needs an extra pair of experienced eyes. Good for startups and scale-ups.</p>
+        <div class="scard-price">From £500/day</div>
+        <a href="#contact" class="scard-link">Get in touch →</a>
+      </div>
+      <div class="scard">
+        <div class="scard-num">02</div>
+        <h3>1:1 mentorship</h3>
+        <p>For engineers who want to think through a career decision, prepare for interviews, go for promotion, or just talk to someone who's been through it.</p>
+        <div class="scard-price">From £120/session</div>
+        <a href="#contact" class="scard-link">Book a session →</a>
+      </div>
+      <div class="scard">
+        <div class="scard-num">03</div>
+        <h3>Speaking & workshops</h3>
+        <p>I talk at conferences and run workshops on career growth, engineering culture, and building teams that people actually want to be part of.</p>
+        <div class="scard-price">Rates on request</div>
+        <a href="#contact" class="scard-link">Invite me along →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="community" id="community">
+  <div class="community-grid">
+    <div>
+      <span class="section-label">Community & speaking</span>
+      <h2 class="section-h">The room everyone needed when they started out.</h2>
+      <p class="community-body">A lot of what holds engineers back is not having anyone to talk to — honestly — about the messy stuff. The politics, the imposter syndrome, the "should I take this job?" moments at 11pm.</p>
+      <p class="community-body">I try to be that person, and I run communities where others can be that for each other too.</p>
+      <a href="#contact" class="btn btn-fill" style="margin-top:0.5rem">Come join us</a>
+
+      <div class="talks" style="margin-top:2rem">
+        <div class="talk">
+          <div class="talk-dot"></div>
+          <div>
+            <div class="talk-conf">LeadDev London 2024</div>
+            <div class="talk-title">From IC to leader without losing yourself</div>
+            <div class="talk-meta">Keynote · 800 attendees</div>
+          </div>
+        </div>
+        <div class="talk">
+          <div class="talk-dot"></div>
+          <div>
+            <div class="talk-conf">SREcon Europe 2024</div>
+            <div class="talk-title">Engineering culture that actually sticks</div>
+            <div class="talk-meta">Talk · 500 attendees</div>
+          </div>
+        </div>
+        <div class="talk">
+          <div class="talk-dot"></div>
+          <div>
+            <div class="talk-conf">PyData Global 2023</div>
+            <div class="talk-title">Building more inclusive engineering teams</div>
+            <div class="talk-meta">Workshop · 200 attendees</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="com-stats">
+        <div class="cstat wide">
+          <div class="n">2,400+</div>
+          <div class="l">
+            <strong>Community members</strong>
+            Engineers across the UK and beyond, figuring things out together
+          </div>
+        </div>
+        <div class="cstat"><div class="n">15+</div><div class="l">Conference talks</div></div>
+        <div class="cstat"><div class="n">30+</div><div class="l">Events hosted</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blog-section" id="blog">
+  <div class="blog-inner">
+    <div class="blog-top">
+      <div>
+        <span class="section-label">Writing</span>
+        <h2 class="section-h" style="margin-bottom:0">Stuff I've been thinking about</h2>
+      </div>
+      <a href="#">All posts →</a>
+    </div>
+    <div class="blog-grid">
+      <div class="bcard">
+        <div class="bthumb t1">🌱</div>
+        <div class="bbody">
+          <div class="bcat">Career</div>
+          <h3>How to actually negotiate your salary (without feeling weird about it)</h3>
+          <p>Most engineers undercharge. Here's a practical approach that doesn't require you to be a different person.</p>
+          <div class="bread">5 min read →</div>
+        </div>
+      </div>
+      <div class="bcard">
+        <div class="bthumb t2">🔧</div>
+        <div class="bbody">
+          <div class="bcat">Engineering</div>
+          <h3>Architecture calls I'd make differently — looking back at 8 years of code</h3>
+          <p>Not a list of regrets. More like: things I know now that would've saved younger me a lot of pain.</p>
+          <div class="bread">8 min read →</div>
+        </div>
+      </div>
+      <div class="bcard">
+        <div class="bthumb t3">💭</div>
+        <div class="bbody">
+          <div class="bcat">Leadership</div>
+          <h3>Nobody tells you that managing people is nothing like building software</h3>
+          <p>The transition from IC to manager breaks a lot of good engineers. Here's what actually helps.</p>
+          <div class="bread">6 min read →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-wrap" id="contact">
+  <div class="cta-box">
+    <h2>Let's talk</h2>
+    <p>Whether you've got a specific project in mind, or you just want to have a conversation and see if we're a good fit — my inbox is open.</p>
+    <a href="mailto:hello@dennisbijo.com" class="btn-white">Send me a message</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-name">Dennis Bijo</div>
+  <div class="footer-links">
+    <a href="#">LinkedIn</a>
+    <a href="#">GitHub</a>
+    <a href="#">Twitter / X</a>
+    <a href="#">Newsletter</a>
+  </div>
+  <div class="footer-copy">© 2026 Dennis Bijo</div>
+</footer>
+
+</body>
+</html>
