@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dennis Bijo</title>
+<title>Dennis Bijo — Software Engineer, Mentor & Speaker</title>
+<meta name="description" content="Principal Software Engineer with 8+ years across cybersecurity, finance, and product. Mentor, speaker, and community builder based in the UK.">
+<meta property="og:title" content="Dennis Bijo — Software Engineer, Mentor & Speaker">
+<meta property="og:description" content="I write code, mentor engineers, and genuinely love the people side of tech. Based in the UK, working with people everywhere.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://denniskbijo.com">
+<meta property="og:image" content="https://denniskbijo.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dennis Bijo — Software Engineer, Mentor & Speaker">
+<meta name="twitter:description" content="I write code, mentor engineers, and genuinely love the people side of tech. Based in the UK, working with people everywhere.">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -50,8 +59,14 @@ nav{
   padding:5rem 2.5rem 4rem;
 }
 .hero-intro{
+  display:flex;align-items:center;gap:14px;
   font-size:14px;color:var(--ink-soft);
   letter-spacing:0.04em;margin-bottom:1.5rem;
+}
+.hero-avatar{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--sand);border:2px solid var(--line);
+  object-fit:cover;flex-shrink:0;
 }
 .hero h1{
   font-family:'Lora',serif;
@@ -225,6 +240,56 @@ nav{
 .bcard p{font-size:12px;color:var(--ink-mid);line-height:1.6;margin-bottom:10px}
 .bread{font-size:12px;color:var(--rust)}
 
+.bcard.featured{
+  grid-column:1/-1;
+  display:grid;grid-template-columns:1fr 1.5fr;
+}
+.bcard.featured .bthumb{height:100%;min-height:160px}
+.bcard.featured .bbody{padding:1.5rem;display:flex;flex-direction:column;justify-content:center}
+.bcard.featured h3{font-size:17px}
+.bcard.featured p{font-size:13px}
+.bcard.featured .bcat::after{content:" · Featured";font-weight:400}
+
+.testimonials{background:var(--green-pale);padding:5rem 2.5rem}
+.testimonials-inner{max-width:980px;margin:0 auto}
+.testimonials-top{margin-bottom:2rem}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.tcard{
+  background:var(--warm);
+  border:1px solid var(--line);
+  border-radius:18px;padding:1.5rem;
+  display:flex;flex-direction:column;
+  transition:border-color .2s;
+}
+.tcard:hover{border-color:var(--rust-light)}
+.tcard-quote{
+  font-size:14px;color:var(--ink-mid);
+  line-height:1.75;flex:1;
+  font-style:italic;margin-bottom:1.25rem;
+}
+.tcard-author{
+  display:flex;align-items:center;gap:10px;
+  padding-top:1rem;border-top:1px solid var(--line);
+}
+.tcard-avatar{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--sand);display:flex;
+  align-items:center;justify-content:center;
+  font-size:14px;font-weight:600;color:var(--rust);
+  flex-shrink:0;
+}
+.tcard-name{font-size:13px;font-weight:500}
+.tcard-role{font-size:11px;color:var(--ink-soft)}
+.tcard-source{font-size:10px;color:var(--rust);text-decoration:none;display:inline-block;margin-top:2px}
+.tcard-source:hover{text-decoration:underline}
+.tcard-cta{
+  background:var(--rust-pale);border-color:transparent;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+}
+.tcard-cta p{font-size:14px;color:var(--ink-mid);line-height:1.7;margin-bottom:1rem}
+
 .cta-wrap{max-width:980px;margin:0 auto;padding:5rem 2.5rem}
 .cta-box{
   background:var(--rust);
@@ -295,7 +360,8 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
 .footer-copy{font-size:11px;color:rgba(255,255,255,0.2)}
 
 @media(max-width:720px){
-  .about,.community-grid,.s-grid,.blog-grid,.upcoming-grid{grid-template-columns:1fr}
+  .about,.community-grid,.s-grid,.blog-grid,.upcoming-grid,.tgrid{grid-template-columns:1fr}
+  .bcard.featured{grid-template-columns:1fr}
   .services-top{flex-direction:column;align-items:flex-start;gap:0.75rem}
   .services-note{text-align:left}
   .nav-links{display:none}
@@ -316,7 +382,10 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
 </nav>
 
 <section class="hero" id="home">
-  <p class="hero-intro">Hey, I'm Dennis 👋</p>
+  <p class="hero-intro">
+    <img class="hero-avatar" src="avatar.jpg" alt="Dennis Bijo" onerror="this.style.display='none'">
+    Hey, I'm Dennis 👋
+  </p>
   <h1>I write code, mentor engineers, and <em>genuinely love</em> the people side of tech.</h1>
   <p class="hero-body">I've been building software for 8+ years, and somewhere along the way, realised that helping engineers grow was just as satisfying as shipping features. So I do both now.</p>
   <div class="hero-actions">
@@ -460,6 +529,43 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
   </div>
 </section>
 
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-top">
+      <span class="section-label">What people say</span>
+      <h2 class="section-h">Don't just take my word for it.</h2>
+    </div>
+    <div class="tgrid">
+      <div class="tcard">
+        <p class="tcard-quote">"Dennis provided some great strategies around preparing the right mindset for interviews. The mock interviews were really helpful. Highly recommended!!"</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">K</div>
+          <div>
+            <div class="tcard-name">Kiranjith</div>
+            <div class="tcard-role">Mentee</div>
+            <a class="tcard-source" href="https://mentorcruise.com/mentor/dennisbijo/" target="_blank" rel="noopener">via MentorCruise</a>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <p class="tcard-quote">"Dennis is an awesome mentor. He helped me navigate a career move with clear, actionable advice. Genuinely one of the most supportive people I've worked with."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">L</div>
+          <div>
+            <div class="tcard-name">Lawrence</div>
+            <div class="tcard-role">Mentee</div>
+            <a class="tcard-source" href="https://mentorcruise.com/mentor/dennisbijo/" target="_blank" rel="noopener">via MentorCruise</a>
+          </div>
+        </div>
+      </div>
+      <div class="tcard tcard-cta">
+        <p>Worked with me or seen me speak? I'd love to hear your thoughts.</p>
+        <a href="#contact" class="btn btn-fill">Leave a testimonial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="blog-section" id="blog">
   <div class="blog-inner">
     <div class="blog-top">
@@ -470,33 +576,33 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
       <a href="https://dennisbijo.bearblog.dev/" target="_blank" rel="noopener">All posts →</a>
     </div>
     <div class="blog-grid">
-      <div class="bcard">
-        <div class="bthumb t1">🌱</div>
+      <a class="bcard featured" href="https://dennisbijo.bearblog.dev/bash/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div class="bthumb t1">🧠</div>
         <div class="bbody">
-          <div class="bcat">Career</div>
-          <h3>How to actually negotiate your salary (without feeling weird about it)</h3>
-          <p>Most engineers undercharge. Here's a practical approach that doesn't require you to be a different person.</p>
-          <div class="bread">5 min read →</div>
+          <div class="bcat">Scripting</div>
+          <h3>Bash Adventures: Learnings from my scripting journey with Cursor IDE</h3>
+          <p>From set -euo pipefail to sed, awk, and capturing stderr. A running log of Bash tricks picked up while building real scripts.</p>
+          <div class="bread">Read post →</div>
         </div>
-      </div>
-      <div class="bcard">
-        <div class="bthumb t2">🔧</div>
+      </a>
+      <a class="bcard" href="https://dennisbijo.bearblog.dev/kubernetes/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div class="bthumb t2">🐳</div>
         <div class="bbody">
-          <div class="bcat">Engineering</div>
-          <h3>Architecture calls I'd make differently after 8 years of code</h3>
-          <p>Not a list of regrets. More like: things I know now that would've saved younger me a lot of pain.</p>
-          <div class="bread">8 min read →</div>
+          <div class="bcat">DevOps</div>
+          <h3>What's Kubernetes? Pods, nodes, deployments, and the commands that helped it click.</h3>
+          <p>A beginner-friendly breakdown of the key Kubernetes concepts and handy kubectl commands to get started.</p>
+          <div class="bread">Read post →</div>
         </div>
-      </div>
-      <div class="bcard">
-        <div class="bthumb t3">💭</div>
+      </a>
+      <a class="bcard" href="https://dennisbijo.bearblog.dev/tflearn/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+        <div class="bthumb t3">🧱</div>
         <div class="bbody">
-          <div class="bcat">Leadership</div>
-          <h3>Nobody tells you that managing people is nothing like building software</h3>
-          <p>The transition from IC to manager breaks a lot of good engineers. Here's what actually helps.</p>
-          <div class="bread">6 min read →</div>
+          <div class="bcat">Infrastructure</div>
+          <h3>My Terraform Journey: Infrastructure as code from the trenches.</h3>
+          <p>Variables, resources, modules, and the joy of spinning up infrastructure with a single command.</p>
+          <div class="bread">Read post →</div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
