@@ -270,6 +270,23 @@ nav{
 }
 .btn-white:hover{transform:translateY(-2px)}
 
+.upcoming{max-width:980px;margin:0 auto;padding:5rem 2.5rem}
+.upcoming-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem}
+.upcoming-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.ucard{
+  border:1px solid var(--line);
+  border-radius:18px;background:var(--warm);
+  overflow:hidden;transition:all .2s;
+  text-decoration:none;color:inherit;display:block;
+}
+.ucard:hover{transform:translateY(-3px);border-color:var(--rust-light)}
+.ucard-bar{height:5px}
+.ucard-body{padding:1.25rem}
+.ucard-date{font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--rust);margin-bottom:6px}
+.ucard h3{font-size:15px;font-weight:500;line-height:1.4;margin-bottom:6px}
+.ucard p{font-size:12px;color:var(--ink-mid);line-height:1.6;margin-bottom:10px}
+.ucard-loc{font-size:11px;color:var(--ink-soft)}
+
 footer{background:var(--ink);padding:2.5rem;text-align:center}
 .footer-name{font-family:'Lora',serif;font-size:17px;color:white;margin-bottom:1rem}
 .footer-links{display:flex;justify-content:center;gap:2rem;margin-bottom:1.25rem}
@@ -278,7 +295,7 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
 .footer-copy{font-size:11px;color:rgba(255,255,255,0.2)}
 
 @media(max-width:720px){
-  .about,.community-grid,.s-grid,.blog-grid{grid-template-columns:1fr}
+  .about,.community-grid,.s-grid,.blog-grid,.upcoming-grid{grid-template-columns:1fr}
   .services-top{flex-direction:column;align-items:flex-start;gap:0.75rem}
   .services-note{text-align:left}
   .nav-links{display:none}
@@ -484,6 +501,44 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
   </div>
 </section>
 
+<section class="upcoming" id="upcoming">
+  <div class="upcoming-top">
+    <div>
+      <span class="section-label">Up next</span>
+      <h2 class="section-h" style="margin-bottom:0">Conferences I'm looking forward to in 2026</h2>
+    </div>
+  </div>
+  <div class="upcoming-grid">
+    <a class="ucard" href="https://events.manchester.ac.uk/event/event:e18d-midascxb-j1yebs" target="_blank" rel="noopener">
+      <div class="ucard-bar" style="background:var(--green)"></div>
+      <div class="ucard-body">
+        <div class="ucard-date">April 1, 2026</div>
+        <h3>The Digital Environment Conference 2026</h3>
+        <p>Where AI, data, and digital infrastructure meet environmental research and planetary-scale thinking. Keynote from NVIDIA marking Turing's 75th anniversary.</p>
+        <div class="ucard-loc">University of Manchester, UK</div>
+      </div>
+    </a>
+    <a class="ucard" href="https://nsec.io/" target="_blank" rel="noopener">
+      <div class="ucard-bar" style="background:var(--ink)"></div>
+      <div class="ucard-body">
+        <div class="ucard-date">May 11 &ndash; 17, 2026</div>
+        <h3>NorthSec 2026</h3>
+        <p>One of Canada's largest applied security conferences. Talks on pentesting, reverse engineering, malware, cryptography, plus a 48-hour CTF competition.</p>
+        <div class="ucard-loc">Montreal, Canada</div>
+      </div>
+    </a>
+    <a class="ucard" href="https://www.gophercon.com/" target="_blank" rel="noopener">
+      <div class="ucard-bar" style="background:var(--rust)"></div>
+      <div class="ucard-body">
+        <div class="ucard-date">August 3 &ndash; 6, 2026</div>
+        <h3>GopherCon 2026</h3>
+        <p>The premier Go conference, heading to Seattle this year. Workshops, talks, lightning rounds, and the global Go community all in one place.</p>
+        <div class="ucard-loc">Seattle, USA</div>
+      </div>
+    </a>
+  </div>
+</section>
+
 <div class="cta-wrap" id="contact">
   <div class="cta-box">
     <h2>Let's talk</h2>
@@ -506,9 +561,9 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
 <footer>
   <div class="footer-name">Dennis Bijo</div>
   <div class="footer-links">
-    <a href="#">LinkedIn</a>
-    <a href="#">GitHub</a>
-    <a href="#">Twitter / X</a>
+    <a href="https://www.linkedin.com/in/denniskbijo/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/denniskbijo" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://mentorcruise.com/mentor/dennisbijo/" target="_blank" rel="noopener">MentorCruise</a>
     <a href="https://dennisbijo.bearblog.dev/" target="_blank" rel="noopener">Blog</a>
   </div>
   <div class="footer-copy">© 2026 Dennis Bijo</div>
