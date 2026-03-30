@@ -30,6 +30,20 @@
   --ink-soft:#A09488;
   --line:rgba(100,88,78,0.13);
 }
+html.dark{
+  --cream:#181614;
+  --warm:#211E1B;
+  --sand:#2A2520;
+  --rust:#D4795A;
+  --rust-light:#E89A7A;
+  --rust-pale:#2D2219;
+  --green:#5A7D62;
+  --green-pale:#1E2420;
+  --ink:#F0EDE8;
+  --ink-mid:#B0A898;
+  --ink-soft:#807468;
+  --line:rgba(200,188,178,0.12);
+}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:16px;line-height:1.75;overflow-x:hidden}
 
@@ -425,6 +439,27 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
 .footer-links a:hover{color:#D4795A}
 .footer-copy{font-size:11px;color:rgba(255,255,255,0.2)}
 
+html.dark nav{background:rgba(24,22,20,0.95)}
+html.dark .services-section{background:#121110}
+html.dark .scard{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.08)}
+html.dark .scard:hover{background:rgba(255,255,255,0.08)}
+html.dark footer{background:#121110}
+html.dark .cta-box{background:#A04E2E}
+html.dark .hero-avatar{border-color:var(--line);background:var(--sand)}
+html.dark .t1{background:#1E2B22}
+html.dark .t2{background:#2B221A}
+html.dark .t3{background:#1A2228}
+html.dark .tcard-cta{background:var(--rust-pale)}
+
+.theme-toggle{
+  background:none;border:1px solid var(--line);
+  border-radius:100px;padding:5px 12px;
+  font-size:14px;cursor:pointer;
+  color:var(--ink-mid);transition:all .2s;
+  display:flex;align-items:center;gap:5px;
+}
+.theme-toggle:hover{border-color:var(--rust-light);color:var(--rust)}
+
 @media(max-width:720px){
   .about,.community-grid,.s-grid,.blog-grid,.upcoming-grid,.tgrid,.exp-grid,.mentorship-grid{grid-template-columns:1fr}
   .bcard.featured{grid-template-columns:1fr}
@@ -439,6 +474,10 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
 
 <nav>
   <a href="#" class="logo">Dennis Bijo</a>
+  <div style="display:flex;align-items:center;gap:1.5rem">
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+    <span class="theme-icon">☀️</span>
+  </button>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -447,6 +486,7 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
     <li><a href="dennis-bijo-cv.pdf" target="_blank">CV ↓</a></li>
     <li><a href="#contact" class="nav-btn">Say hello</a></li>
   </ul>
+  </div>
 </nav>
 
 <section class="hero" id="home">
@@ -839,5 +879,23 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
   <div class="footer-copy">© 2026 Dennis Bijo</div>
 </footer>
 
+<script>
+function toggleTheme(){
+  document.documentElement.classList.toggle('dark');
+  const isDark=document.documentElement.classList.contains('dark');
+  localStorage.setItem('theme',isDark?'dark':'light');
+  document.querySelector('.theme-icon').textContent=isDark?'🌙':'☀️';
+}
+(function(){
+  const saved=localStorage.getItem('theme');
+  const prefersDark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  if(saved==='dark'||(! saved && prefersDark)){
+    document.documentElement.classList.add('dark');
+    document.addEventListener('DOMContentLoaded',function(){
+      document.querySelector('.theme-icon').textContent='🌙';
+    });
+  }
+})();
+</script>
 </body>
 </html>
