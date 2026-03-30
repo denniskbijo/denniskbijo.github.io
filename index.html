@@ -459,6 +459,116 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
   white-space:nowrap;
 }
 
+.tools-section{max-width:980px;margin:0 auto;padding:4rem 2.5rem 2rem}
+.tools-grid{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:1.25rem;
+}
+.tool-item{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 18px;border-radius:12px;
+  background:var(--warm);border:1px solid var(--line);
+  font-size:13px;color:var(--ink);font-weight:500;
+  transition:all .18s;cursor:default;
+}
+.tool-item:hover{border-color:var(--rust-light);color:var(--rust)}
+.tool-icon{font-size:16px;line-height:1}
+
+.journey-section{background:var(--sand);padding:5rem 2.5rem}
+.journey-inner{max-width:980px;margin:0 auto}
+.journey-top{margin-bottom:2.5rem}
+.timeline{position:relative;padding-left:28px}
+.timeline::before{
+  content:'';position:absolute;left:8px;top:6px;
+  bottom:6px;width:2px;background:var(--line);
+}
+.tl-item{position:relative;padding-bottom:2rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{
+  position:absolute;left:-28px;top:4px;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--cream);border:3px solid var(--rust);
+  z-index:1;
+}
+.tl-item.current .tl-dot{background:var(--rust)}
+.tl-year{font-size:11px;color:var(--rust);font-weight:600;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:3px}
+.tl-title{font-size:15px;font-weight:500;margin-bottom:3px}
+.tl-desc{font-size:13px;color:var(--ink-mid);line-height:1.7}
+.tl-loc{font-size:11px;color:var(--ink-soft);margin-top:3px}
+
+.visa-section{max-width:980px;margin:0 auto;padding:4rem 2.5rem}
+.visa-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.5rem}
+.visa-card{
+  padding:1.25rem;border:1px solid var(--line);
+  border-radius:14px;background:var(--warm);
+  transition:border-color .2s;
+}
+.visa-card:hover{border-color:var(--rust-light)}
+.visa-card h4{font-size:14px;font-weight:500;margin-bottom:6px}
+.visa-card p{font-size:12px;color:var(--ink-mid);line-height:1.7}
+.visa-card ul{list-style:none;padding:0;margin-top:8px}
+.visa-card li{
+  font-size:12px;color:var(--ink-mid);
+  padding:3px 0 3px 16px;position:relative;line-height:1.6;
+}
+.visa-card li::before{
+  content:'→';position:absolute;left:0;color:var(--rust);font-size:11px;
+}
+.visa-cta{margin-top:1.5rem;text-align:center}
+.visa-cta p{font-size:13px;color:var(--ink-mid);margin-bottom:8px}
+
+.newsletter-strip{
+  background:var(--rust-pale);padding:3rem 2.5rem;
+  text-align:center;
+}
+.newsletter-inner{max-width:520px;margin:0 auto}
+.newsletter-inner h3{font-family:'Lora',serif;font-size:20px;font-weight:600;margin-bottom:6px}
+.newsletter-inner p{font-size:13px;color:var(--ink-mid);margin-bottom:1rem;line-height:1.7}
+.newsletter-form{display:flex;gap:8px}
+.newsletter-form input{
+  flex:1;padding:11px 16px;
+  border:1.5px solid var(--line);border-radius:100px;
+  background:var(--warm);font-family:'DM Sans',sans-serif;
+  font-size:13px;color:var(--ink);outline:none;
+  transition:border-color .2s;
+}
+.newsletter-form input:focus{border-color:var(--rust)}
+.newsletter-form input::placeholder{color:var(--ink-soft)}
+.newsletter-form button{
+  padding:11px 22px;border-radius:100px;
+  background:var(--rust);color:white;border:none;
+  font-size:13px;font-weight:500;cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  transition:background .2s;white-space:nowrap;
+}
+.newsletter-form button:hover{background:#9A4A2C}
+
+.ama-section{max-width:980px;margin:0 auto;padding:4rem 2.5rem}
+.ama-box{
+  background:var(--warm);border:1px solid var(--line);
+  border-radius:18px;padding:2rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;
+  align-items:center;
+}
+.ama-box h3{font-family:'Lora',serif;font-size:20px;font-weight:600;margin-bottom:6px}
+.ama-box>div:first-child p{font-size:13px;color:var(--ink-mid);line-height:1.7}
+.ama-form{display:flex;flex-direction:column;gap:10px}
+.ama-form textarea{
+  width:100%;padding:12px 16px;
+  border:1.5px solid var(--line);border-radius:12px;
+  background:var(--cream);font-family:'DM Sans',sans-serif;
+  font-size:13px;color:var(--ink);outline:none;
+  resize:vertical;min-height:90px;transition:border-color .2s;
+}
+.ama-form textarea:focus{border-color:var(--rust)}
+.ama-form textarea::placeholder{color:var(--ink-soft)}
+.ama-form button{
+  align-self:flex-end;padding:10px 22px;
+  border-radius:100px;background:var(--rust);
+  color:white;border:none;font-size:13px;
+  font-weight:500;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:background .2s;
+}
+.ama-form button:hover{background:#9A4A2C}
 
 html.dark nav{background:rgba(24,22,20,0.95)}
 html.dark .services-section{background:#121110}
@@ -482,7 +592,9 @@ html.dark .tcard-cta{background:var(--rust-pale)}
 .theme-toggle:hover{border-color:var(--rust-light);color:var(--rust)}
 
 @media(max-width:720px){
-  .about,.community-grid,.s-grid,.blog-grid,.upcoming-grid,.tgrid,.exp-grid,.mentorship-grid{grid-template-columns:1fr}
+  .about,.community-grid,.s-grid,.blog-grid,.upcoming-grid,.tgrid,.exp-grid,.mentorship-grid,.visa-grid{grid-template-columns:1fr}
+  .ama-box{grid-template-columns:1fr}
+  .newsletter-form{flex-direction:column}
   .bcard.featured{grid-template-columns:1fr}
   .hero-actions .btn-cv-inline{display:none}
   .services-top{flex-direction:column;align-items:flex-start;gap:0.75rem}
@@ -600,6 +712,23 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
 </section>
 
+<section class="tools-section">
+  <span class="section-label">Daily toolkit</span>
+  <h2 class="section-h">Tools I reach for every day.</h2>
+  <div class="tools-grid">
+    <div class="tool-item"><span class="tool-icon">⌨️</span> Cursor IDE</div>
+    <div class="tool-item"><span class="tool-icon">🐙</span> GitHub</div>
+    <div class="tool-item"><span class="tool-icon">🐳</span> Docker</div>
+    <div class="tool-item"><span class="tool-icon">☁️</span> AWS</div>
+    <div class="tool-item"><span class="tool-icon">🔧</span> Terraform</div>
+    <div class="tool-item"><span class="tool-icon">📝</span> Bear Blog</div>
+    <div class="tool-item"><span class="tool-icon">📋</span> Notion</div>
+    <div class="tool-item"><span class="tool-icon">💬</span> Slack</div>
+    <div class="tool-item"><span class="tool-icon">🌍</span> Duolingo</div>
+    <div class="tool-item"><span class="tool-icon">🎧</span> Spotify</div>
+  </div>
+</section>
+
 <section class="exp-section" id="experience">
   <span class="section-label">Experience</span>
   <h2 class="section-h">Where I've built things that mattered.</h2>
@@ -637,6 +766,80 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
   <div class="exp-cv">
     <a href="dennis-bijo-cv.pdf" target="_blank">Download full CV (PDF) &darr;</a>
+  </div>
+</section>
+
+<section class="journey-section" id="journey">
+  <div class="journey-inner">
+    <div class="journey-top">
+      <span class="section-label">My journey</span>
+      <h2 class="section-h">Kerala to the UK, one step at a time.</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item current">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2024 &ndash; Present</div>
+        <div class="tl-title">Principal Software Engineer at Sophos</div>
+        <div class="tl-desc">SecureWorks acquired by Sophos. Building threat detection at global scale on the Taegis platform.</div>
+        <div class="tl-loc">Remote, UK</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2023 &ndash; 2024</div>
+        <div class="tl-title">Senior Software Engineer at Capital One</div>
+        <div class="tl-desc">Transformed customer communication channels. Built cloud-native replacements for legacy infrastructure.</div>
+        <div class="tl-loc">Remote, UK</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2022 &ndash; 2023</div>
+        <div class="tl-title">Java Software Engineer at Barclays</div>
+        <div class="tl-desc">Joined through a university career event. Part of the Fraud Technology team, detecting financial fraud in real time.</div>
+        <div class="tl-loc">Northampton, UK</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2022</div>
+        <div class="tl-title">MSc Computer Science (Distinction)</div>
+        <div class="tl-desc">Arrived in the UK as an international student. Balanced 12-hour care home shifts with coursework before landing a role at Barclays.</div>
+        <div class="tl-loc">University of Northampton</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2021 &ndash; 2022</div>
+        <div class="tl-title">Senior Software Engineer at HashedIn by Deloitte</div>
+        <div class="tl-desc">Led teams building products for clients including Indeed. First experience leading people, not just projects.</div>
+        <div class="tl-loc">Bangalore, India (Remote)</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2019 &ndash; 2021</div>
+        <div class="tl-title">Pandemic, pivots, and a plan to travel</div>
+        <div class="tl-desc">Survived salary cuts at a bus booking startup during COVID. Travelled across India once lockdowns lifted, sparking the desire to study abroad.</div>
+        <div class="tl-loc">Hyderabad &amp; Kerala, India</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2017 &ndash; 2019</div>
+        <div class="tl-title">Software Engineer at Vanenburg (Rappit)</div>
+        <div class="tl-desc">First job. Built solutions on Google Cloud Platform for enterprise clients including Valeo. Where it all started.</div>
+        <div class="tl-loc">Coimbatore, India</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2013 &ndash; 2017</div>
+        <div class="tl-title">BTech Computer Science &amp; Engineering</div>
+        <div class="tl-desc">Discovered programming through Java and C++. Chose to stay close to family, knowing the next chapter would take me further away.</div>
+        <div class="tl-loc">Mahatma Gandhi University, Kerala</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">Growing up</div>
+        <div class="tl-title">Kerala, India</div>
+        <div class="tl-desc">Born in Idukki, the "High-Range" district. Attended Navodaya residential school in the mountains. Fascinated by nature, hooked on "Tom and Jerry" and other cartoons, and curious about how everything works.</div>
+        <div class="tl-loc">Idukki, Kerala</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -705,6 +908,58 @@ html.dark .tcard-cta{background:var(--rust-pale)}
         <div class="faq-body">That works too. I offer single sessions for resume reviews, portfolio feedback, mock interviews, and general career advice. No commitment required. Check out the options on my MentorCruise profile.</div>
       </details>
     </div>
+  </div>
+</section>
+
+<section class="visa-section" id="visa">
+  <span class="section-label">For international engineers</span>
+  <h2 class="section-h">Visa sponsorship in the UK: what I wish I'd known.</h2>
+  <p class="about-body">I've navigated the UK visa sponsorship process twice. It's stressful, confusing, and full of conflicting advice. Here's what actually helped me.</p>
+  <div class="visa-grid">
+    <div class="visa-card">
+      <h4>Companies that sponsor</h4>
+      <p>Not every company can or will sponsor. Focus your search on those with a track record.</p>
+      <ul>
+        <li>Check the UK <strong>Register of Licensed Sponsors</strong> on GOV.UK</li>
+        <li>Target large companies (banks, consultancies, tech firms) that sponsor regularly</li>
+        <li>Barclays, Capital One, Deloitte, and many others actively sponsor Skilled Worker visas</li>
+        <li>Smaller companies can sponsor too, but check their licence status first</li>
+      </ul>
+    </div>
+    <div class="visa-card">
+      <h4>Tips for the process</h4>
+      <p>The process is manageable if you prepare well and stay organised.</p>
+      <ul>
+        <li>Start applying early. Sponsorship takes time on the employer's side</li>
+        <li>Be upfront about your visa needs. Good employers won't be put off</li>
+        <li>Use AI tools to tailor your CV for each application</li>
+        <li>Network at university events. My Barclays job came from a career session</li>
+      </ul>
+    </div>
+    <div class="visa-card">
+      <h4>Common mistakes</h4>
+      <p>Things I see mentees get wrong repeatedly.</p>
+      <ul>
+        <li>Applying only to companies that don't sponsor</li>
+        <li>Not mentioning sponsorship until the final interview stage</li>
+        <li>Ignoring the Graduate Visa route as a bridge to sponsored employment</li>
+        <li>Underestimating how long the Home Office processing takes</li>
+      </ul>
+    </div>
+    <div class="visa-card">
+      <h4>Useful resources</h4>
+      <p>Bookmark these if you're going through the process.</p>
+      <ul>
+        <li><strong>GOV.UK Skilled Worker visa</strong> page for official guidance</li>
+        <li><strong>Register of Licensed Sponsors</strong> to check employer licences</li>
+        <li><strong>UKCISA</strong> for international student support</li>
+        <li>My <strong>MentorCruise</strong> profile for 1:1 help with the process</li>
+      </ul>
+    </div>
+  </div>
+  <div class="visa-cta">
+    <p>Going through the sponsorship process? I've been there. Twice.</p>
+    <a href="https://mentorcruise.com/mentor/dennisbijo/" target="_blank" rel="noopener" class="btn btn-fill">Book a visa mentoring session</a>
   </div>
 </section>
 
@@ -842,6 +1097,17 @@ html.dark .tcard-cta{background:var(--rust-pale)}
     </div>
   </div>
 </section>
+
+<div class="newsletter-strip">
+  <div class="newsletter-inner">
+    <h3>Get notified when I publish</h3>
+    <p>No spam. Just a short email when I write something new about engineering, career growth, or the messy stuff in between.</p>
+    <form class="newsletter-form" action="https://formspree.io/f/mnjodoan" method="POST">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</div>
 
 <section class="upcoming" id="upcoming">
   <div class="upcoming-top">
