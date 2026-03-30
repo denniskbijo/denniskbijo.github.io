@@ -594,6 +594,94 @@ html.dark .tcard-cta{background:var(--rust-pale)}
 }
 .theme-toggle:hover{border-color:var(--rust-light);color:var(--rust)}
 
+.skip-link{
+  position:absolute;top:-100%;left:1rem;
+  background:var(--rust);color:white;
+  padding:8px 18px;border-radius:0 0 8px 8px;
+  font-size:13px;text-decoration:none;z-index:999;
+  transition:top .2s;
+}
+.skip-link:focus{top:0}
+
+*:focus-visible{
+  outline:2px solid var(--rust);
+  outline-offset:2px;
+  border-radius:4px;
+}
+
+.progress-bar{
+  position:fixed;top:0;left:0;height:3px;
+  background:var(--rust);z-index:100;
+  width:0;transition:none;
+}
+
+.hamburger{
+  display:none;background:none;border:none;
+  cursor:pointer;padding:4px;
+  flex-direction:column;gap:5px;
+}
+.hamburger span{
+  display:block;width:22px;height:2px;
+  background:var(--ink);transition:all .25s;
+}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+.mobile-menu{
+  display:none;position:fixed;
+  top:60px;left:0;right:0;bottom:0;
+  background:var(--cream);z-index:49;
+  padding:2rem 2.5rem;
+  flex-direction:column;gap:0;
+  overflow-y:auto;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  font-size:17px;color:var(--ink);
+  text-decoration:none;padding:14px 0;
+  border-bottom:1px solid var(--line);
+  transition:color .2s;
+}
+.mobile-menu a:hover{color:var(--rust)}
+.mobile-menu .nav-btn{
+  display:inline-block;text-align:center;
+  margin-top:1rem;border-bottom:none;
+  padding:12px 24px;
+}
+
+.scroll-top{
+  position:fixed;bottom:2rem;right:2rem;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--rust);color:white;
+  border:none;cursor:pointer;font-size:18px;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transform:translateY(10px);
+  transition:all .25s;z-index:40;
+  pointer-events:none;
+}
+.scroll-top.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.scroll-top:hover{background:#9A4A2C;transform:translateY(-2px)}
+
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  .fade-in{opacity:1;transform:none;transition:none}
+}
+
+@media print{
+  nav,.learning-strip,.theme-toggle,.hamburger,.mobile-menu,
+  .scroll-top,.progress-bar,.hero-actions,.newsletter-strip,
+  .ama-section,.cta-wrap,footer,.btn,.nav-btn{display:none !important}
+  body{font-size:12px;color:#000;background:#fff}
+  .services-section{background:#f5f5f5 !important;color:#000 !important}
+  .scard{background:#fff !important;border:1px solid #ccc !important}
+  .scard h3,.scard p,.scard-link{color:#000 !important}
+  a{color:#000;text-decoration:underline}
+  .hero{padding:2rem 0}
+  section{padding:2rem 0 !important}
+}
+
 @media(max-width:720px){
   .about,.community-grid,.s-grid,.blog-grid,.upcoming-grid,.tgrid,.exp-grid,.mentorship-grid,.visa-grid{grid-template-columns:1fr}
   .ama-box{grid-template-columns:1fr}
@@ -603,12 +691,38 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   .services-top{flex-direction:column;align-items:flex-start;gap:0.75rem}
   .services-note{text-align:left}
   .nav-links{display:none}
+  .hamburger{display:flex}
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"Dennis K Bijo",
+  "url":"https://denniskbijo.github.io",
+  "image":"https://denniskbijo.github.io/avatar.jpg",
+  "jobTitle":"Principal Software Engineer",
+  "worksFor":{"@type":"Organization","name":"Sophos"},
+  "alumniOf":[
+    {"@type":"CollegeOrUniversity","name":"University of Northampton"},
+    {"@type":"CollegeOrUniversity","name":"Mahatma Gandhi University"}
+  ],
+  "knowsAbout":["Go","Java","Python","AWS","Kubernetes","Terraform","Cybersecurity"],
+  "sameAs":[
+    "https://www.linkedin.com/in/denniskbijo/",
+    "https://github.com/denniskbijo",
+    "https://mentorcruise.com/mentor/dennisbijo/",
+    "https://dennisbijo.bearblog.dev/"
+  ]
+}
+</script>
 </head>
 <body>
 
-<nav>
+<a href="#main" class="skip-link">Skip to content</a>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav role="navigation" aria-label="Main navigation">
   <a href="#" class="logo">Dennis Bijo</a>
   <div style="display:flex;align-items:center;gap:1.5rem">
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
@@ -622,8 +736,21 @@ html.dark .tcard-cta{background:var(--rust-pale)}
     <li><a href="dennis-bijo-cv.pdf" target="_blank">CV ↓</a></li>
     <li><a href="#contact" class="nav-btn">Say hello</a></li>
   </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#community" onclick="closeMenu()">Speaking</a>
+  <a href="#blog" onclick="closeMenu()">Writing</a>
+  <a href="#journey" onclick="closeMenu()">My Journey</a>
+  <a href="dennis-bijo-cv.pdf" target="_blank" onclick="closeMenu()">Download CV</a>
+  <a href="#contact" class="nav-btn" onclick="closeMenu()">Say hello</a>
+</div>
 
 <div class="learning-strip">
   <div class="learning-inner">
@@ -636,9 +763,10 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
 </div>
 
+<main id="main">
 <section class="hero" id="home">
   <p class="hero-intro">
-    <img class="hero-avatar" src="avatar.jpg" alt="Dennis Bijo" onerror="this.style.display='none'">
+    <img class="hero-avatar" src="avatar.jpg" alt="Dennis Bijo" loading="lazy" onerror="this.style.display='none'">
     Hey, I'm Dennis 👋
   </p>
   <h1>I write code, mentor engineers, and <em>genuinely love</em> the people side of tech.</h1>
@@ -657,7 +785,7 @@ html.dark .tcard-cta{background:var(--rust-pale)}
 
 <div class="divider"></div>
 
-<section class="about" id="about">
+<section class="about fade-in" id="about">
   <div>
     <span class="section-label">About me</span>
     <h2 class="section-h">Not just a coder who also mentors.</h2>
@@ -715,7 +843,7 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
 </section>
 
-<section class="tools-section">
+<section class="tools-section fade-in">
   <span class="section-label">Daily toolkit</span>
   <h2 class="section-h">Tools I reach for every day.</h2>
   <div class="tools-grid">
@@ -732,7 +860,7 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
 </section>
 
-<section class="exp-section" id="experience">
+<section class="exp-section fade-in" id="experience">
   <span class="section-label">Experience</span>
   <h2 class="section-h">Where I've built things that mattered.</h2>
   <div class="exp-grid">
@@ -772,7 +900,7 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
 </section>
 
-<section class="journey-section" id="journey">
+<section class="journey-section fade-in" id="journey">
   <div class="journey-inner">
     <div class="journey-top">
       <span class="section-label">My journey</span>
@@ -848,7 +976,7 @@ html.dark .tcard-cta{background:var(--rust-pale)}
 
 <div class="divider"></div>
 
-<section class="services-section" id="services">
+<section class="services-section fade-in" id="services">
   <div class="services-inner">
     <div class="services-top">
       <div>
@@ -880,7 +1008,7 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
 </section>
 
-<section class="mentorship-detail">
+<section class="mentorship-detail fade-in">
   <div class="mentorship-grid">
     <div class="who-box">
       <h3>Who I work with</h3>
@@ -914,7 +1042,7 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
 </section>
 
-<section class="visa-section" id="visa">
+<section class="visa-section fade-in" id="visa">
   <span class="section-label">For international engineers</span>
   <h2 class="section-h">Visa sponsorship in the UK: what I wish I'd known.</h2>
   <p class="about-body">I've navigated the UK visa sponsorship process twice. It's stressful, confusing, and full of conflicting advice. Here's what actually helped me.</p>
@@ -966,7 +1094,7 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
 </section>
 
-<section class="community" id="community">
+<section class="community fade-in" id="community">
   <div class="community-grid">
     <div>
       <span class="section-label">Community & speaking</span>
@@ -1023,7 +1151,7 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
 </section>
 
-<section class="testimonials">
+<section class="testimonials fade-in">
   <div class="testimonials-inner">
     <div class="testimonials-top">
       <span class="section-label">What people say</span>
@@ -1060,7 +1188,7 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
 </section>
 
-<section class="blog-section" id="blog">
+<section class="blog-section fade-in" id="blog">
   <div class="blog-inner">
     <div class="blog-top">
       <div>
@@ -1112,7 +1240,7 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
 </div>
 
-<section class="upcoming" id="upcoming">
+<section class="upcoming fade-in" id="upcoming">
   <div class="upcoming-top">
     <div>
       <span class="section-label">Up next</span>
@@ -1150,7 +1278,7 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
 </section>
 
-<section class="ama-section">
+<section class="ama-section fade-in">
   <div class="ama-box">
     <div>
       <h3>Ask me anything</h3>
@@ -1182,6 +1310,10 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </div>
 </div>
 
+</main>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0})" aria-label="Scroll to top">↑</button>
+
 <footer>
   <div class="footer-name">Dennis Bijo</div>
   <div class="footer-links">
@@ -1196,20 +1328,59 @@ html.dark .tcard-cta{background:var(--rust-pale)}
 <script>
 function toggleTheme(){
   document.documentElement.classList.toggle('dark');
-  const isDark=document.documentElement.classList.contains('dark');
-  localStorage.setItem('theme',isDark?'dark':'light');
-  document.querySelector('.theme-icon').textContent=isDark?'🌙':'☀️';
+  var d=document.documentElement.classList.contains('dark');
+  localStorage.setItem('theme',d?'dark':'light');
+  document.querySelector('.theme-icon').textContent=d?'🌙':'☀️';
 }
 (function(){
-  const saved=localStorage.getItem('theme');
-  const prefersDark=window.matchMedia('(prefers-color-scheme:dark)').matches;
-  if(saved==='dark'||(! saved && prefersDark)){
+  var s=localStorage.getItem('theme');
+  var p=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  if(s==='dark'||(!s&&p)){
     document.documentElement.classList.add('dark');
     document.addEventListener('DOMContentLoaded',function(){
       document.querySelector('.theme-icon').textContent='🌙';
     });
   }
 })();
+
+function toggleMenu(){
+  var m=document.getElementById('mobileMenu');
+  var b=document.querySelector('.hamburger');
+  var open=m.classList.toggle('open');
+  b.classList.toggle('active');
+  b.setAttribute('aria-expanded',open);
+  b.setAttribute('aria-label',open?'Close menu':'Open menu');
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeMenu(){
+  var m=document.getElementById('mobileMenu');
+  var b=document.querySelector('.hamburger');
+  m.classList.remove('open');
+  b.classList.remove('active');
+  b.setAttribute('aria-expanded','false');
+  b.setAttribute('aria-label','Open menu');
+  document.body.style.overflow='';
+}
+
+window.addEventListener('scroll',function(){
+  var h=document.documentElement;
+  var pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressBar').style.width=pct+'%';
+
+  var btn=document.getElementById('scrollTop');
+  if(h.scrollTop>600) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+},{passive:true});
+
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(function(el){observer.observe(el)});
 </script>
 </body>
 </html>
