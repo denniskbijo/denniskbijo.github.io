@@ -439,6 +439,27 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
 .footer-links a:hover{color:#D4795A}
 .footer-copy{font-size:11px;color:rgba(255,255,255,0.2)}
 
+.learning-strip{
+  background:var(--sand);border-bottom:1px solid var(--line);
+  padding:10px 2.5rem;overflow:hidden;
+}
+.learning-inner{
+  display:flex;align-items:center;gap:12px;
+  max-width:980px;margin:0 auto;
+  flex-wrap:wrap;justify-content:center;
+}
+.learning-label{
+  font-size:11px;font-weight:600;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--rust);white-space:nowrap;
+}
+.learning-tag{
+  font-size:12px;padding:4px 12px;
+  border-radius:100px;background:var(--warm);
+  border:1px solid var(--line);color:var(--ink-mid);
+  white-space:nowrap;
+}
+
+
 html.dark nav{background:rgba(24,22,20,0.95)}
 html.dark .services-section{background:#121110}
 html.dark .scard{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.08)}
@@ -488,6 +509,17 @@ html.dark .tcard-cta{background:var(--rust-pale)}
   </ul>
   </div>
 </nav>
+
+<div class="learning-strip">
+  <div class="learning-inner">
+    <span class="learning-label">Currently learning</span>
+    <span class="learning-tag">Rust</span>
+    <span class="learning-tag">AI</span>
+    <span class="learning-tag">Agentic Workflows</span>
+    <span class="learning-tag">Agentic Memory</span>
+    <span class="learning-tag">Spanish</span>
+  </div>
+</div>
 
 <section class="hero" id="home">
   <p class="hero-intro">
