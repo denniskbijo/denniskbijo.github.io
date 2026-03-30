@@ -135,6 +135,72 @@ nav{
 }
 .tag:hover{border-color:var(--rust-light);color:var(--rust)}
 
+.tech-stack{margin-top:2rem}
+.tech-stack h4{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px;font-weight:500}
+.stack-grid{display:flex;flex-wrap:wrap;gap:8px}
+.stack-item{
+  font-size:13px;font-weight:500;
+  padding:8px 16px;border-radius:10px;
+  background:var(--warm);border:1px solid var(--line);
+  color:var(--ink);transition:all .18s;cursor:default;
+}
+.stack-item:hover{border-color:var(--rust-light);color:var(--rust)}
+
+.exp-section{max-width:980px;margin:0 auto;padding:5rem 2.5rem}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.exp-card{
+  padding:1.25rem;border:1px solid var(--line);
+  border-radius:14px;background:var(--warm);
+  transition:border-color .2s;position:relative;
+}
+.exp-card:hover{border-color:var(--rust-light)}
+.exp-card.current{border-left:3px solid var(--rust)}
+.exp-period{font-size:11px;color:var(--rust);font-weight:500;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:4px}
+.exp-role{font-size:15px;font-weight:500;margin-bottom:2px}
+.exp-company{font-size:13px;color:var(--ink-mid);margin-bottom:8px}
+.exp-impact{font-size:12px;color:var(--ink-mid);line-height:1.65}
+.exp-impact strong{color:var(--ink);font-weight:500}
+.exp-cv{margin-top:1.5rem;text-align:center}
+.exp-cv a{font-size:13px;color:var(--rust);text-decoration:none;font-weight:500}
+.exp-cv a:hover{text-decoration:underline}
+
+.mentorship-detail{max-width:980px;margin:0 auto;padding:4rem 2.5rem}
+.mentorship-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.who-box{
+  padding:1.5rem;background:var(--rust-pale);
+  border-radius:18px;
+}
+.who-box h3{font-size:16px;font-weight:600;margin-bottom:0.75rem;font-family:'Lora',serif}
+.who-list{list-style:none;padding:0}
+.who-list li{
+  font-size:13px;color:var(--ink-mid);
+  padding:6px 0;padding-left:18px;
+  position:relative;line-height:1.6;
+}
+.who-list li::before{
+  content:'';position:absolute;left:0;top:12px;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--rust);
+}
+.faq{display:flex;flex-direction:column;gap:8px}
+.faq details{
+  border:1px solid var(--line);
+  border-radius:12px;background:var(--warm);
+  overflow:hidden;transition:border-color .2s;
+}
+.faq details:hover{border-color:var(--rust-light)}
+.faq details[open]{border-color:var(--rust-light)}
+.faq summary{
+  padding:1rem 1.25rem;font-size:14px;
+  font-weight:500;cursor:pointer;
+  list-style:none;display:flex;
+  justify-content:space-between;align-items:center;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-size:18px;color:var(--rust);font-weight:300;transition:transform .2s}
+.faq details[open] summary::after{content:'\2212'}
+.faq-body{padding:0 1.25rem 1.25rem;font-size:13px;color:var(--ink-mid);line-height:1.75}
+
 .about-cards{display:flex;flex-direction:column;gap:12px}
 .acard{
   padding:1.1rem 1.25rem;
@@ -360,8 +426,9 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
 .footer-copy{font-size:11px;color:rgba(255,255,255,0.2)}
 
 @media(max-width:720px){
-  .about,.community-grid,.s-grid,.blog-grid,.upcoming-grid,.tgrid{grid-template-columns:1fr}
+  .about,.community-grid,.s-grid,.blog-grid,.upcoming-grid,.tgrid,.exp-grid,.mentorship-grid{grid-template-columns:1fr}
   .bcard.featured{grid-template-columns:1fr}
+  .hero-actions .btn-cv-inline{display:none}
   .services-top{flex-direction:column;align-items:flex-start;gap:0.75rem}
   .services-note{text-align:left}
   .nav-links{display:none}
@@ -377,6 +444,7 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
     <li><a href="#services">Services</a></li>
     <li><a href="#community">Speaking</a></li>
     <li><a href="#blog">Writing</a></li>
+    <li><a href="dennis-bijo-cv.pdf" target="_blank">CV ↓</a></li>
     <li><a href="#contact" class="nav-btn">Say hello</a></li>
   </ul>
 </nav>
@@ -391,6 +459,7 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
   <div class="hero-actions">
     <a href="#services" class="btn btn-fill">See how I can help</a>
     <a href="#about" class="btn btn-ghost">A bit about me</a>
+    <a href="dennis-bijo-cv.pdf" target="_blank" class="btn btn-ghost btn-cv-inline">Download CV ↓</a>
   </div>
   <div class="hero-strip">
     <div class="hero-strip-item"><strong>8 yrs</strong><span>in engineering</span></div>
@@ -408,14 +477,35 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
     <p class="about-body">I've worked across startups and big teams, worn a lot of hats, and made a lot of mistakes. The good kind. The kind that teach you things textbooks skip over.</p>
     <p class="about-body">These days I split my time between consulting on technical problems, doing 1:1 mentorship with engineers figuring out their next move, and building communities where people actually talk to each other honestly.</p>
     <p class="about-body">I'm based in the UK, but work with people everywhere.</p>
-    <div class="tags">
-      <span class="tag">System design</span>
-      <span class="tag">Career strategy</span>
-      <span class="tag">Team leadership</span>
-      <span class="tag">Full-stack</span>
-      <span class="tag">Engineering culture</span>
-      <span class="tag">Distributed systems</span>
-      <span class="tag">Public speaking</span>
+    <div class="tech-stack">
+      <h4>Languages</h4>
+      <div class="stack-grid">
+        <span class="stack-item">Go</span>
+        <span class="stack-item">Java</span>
+        <span class="stack-item">Python</span>
+        <span class="stack-item">JavaScript</span>
+        <span class="stack-item">TypeScript</span>
+      </div>
+    </div>
+    <div class="tech-stack" style="margin-top:1rem">
+      <h4>Infrastructure & Cloud</h4>
+      <div class="stack-grid">
+        <span class="stack-item">AWS</span>
+        <span class="stack-item">GCP</span>
+        <span class="stack-item">Kubernetes</span>
+        <span class="stack-item">Terraform</span>
+        <span class="stack-item">Docker</span>
+      </div>
+    </div>
+    <div class="tech-stack" style="margin-top:1rem">
+      <h4>Frameworks & Tools</h4>
+      <div class="stack-grid">
+        <span class="stack-item">Spring Boot</span>
+        <span class="stack-item">REST APIs</span>
+        <span class="stack-item">MongoDB</span>
+        <span class="stack-item">SQL</span>
+        <span class="stack-item">Git</span>
+      </div>
     </div>
   </div>
   <div class="about-cards">
@@ -435,6 +525,46 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
       <h4>I like this work</h4>
       <p>Genuinely. The moment someone gets a promotion they didn't think was possible, or ships something they're proud of. That never gets old.</p>
     </div>
+  </div>
+</section>
+
+<section class="exp-section" id="experience">
+  <span class="section-label">Experience</span>
+  <h2 class="section-h">Where I've built things that mattered.</h2>
+  <div class="exp-grid">
+    <div class="exp-card current">
+      <div class="exp-period">2024 &ndash; Present</div>
+      <div class="exp-role">Principal Software Engineer</div>
+      <div class="exp-company">SecureWorks (Dell)</div>
+      <div class="exp-impact">Core member of the <strong>Taegis detection platform</strong>, processing <strong>billions of telemetry events</strong> daily to detect and respond to threats across a global customer base.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-period">2023 &ndash; 2024</div>
+      <div class="exp-role">Senior Software Engineer</div>
+      <div class="exp-company">Capital One</div>
+      <div class="exp-impact">Transformed customer communication channels and built a <strong>cloud-native replacement</strong> for an on-premise comms server, improving scalability and reducing operational overhead.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-period">2022 &ndash; 2023</div>
+      <div class="exp-role">Java Software Engineer</div>
+      <div class="exp-company">Barclays</div>
+      <div class="exp-impact">Part of the <strong>Fraud Technology team</strong>, building systems to detect and prevent financial fraud in real time across Barclays' banking platform.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-period">2021 &ndash; 2022</div>
+      <div class="exp-role">Senior Software Engineer</div>
+      <div class="exp-company">HashedIn by Deloitte</div>
+      <div class="exp-impact">Led engineering teams building products for clients including <strong>Indeed</strong>. First exposure to leading people as well as projects across a diverse portfolio of Deloitte clients.</div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-period">2017 &ndash; 2019</div>
+      <div class="exp-role">Software Engineer</div>
+      <div class="exp-company">Vanenburg (Rappit)</div>
+      <div class="exp-impact">Built solutions on <strong>Google Cloud Platform</strong> for enterprise clients including Valeo (French auto parts manufacturer). Where it all started.</div>
+    </div>
+  </div>
+  <div class="exp-cv">
+    <a href="dennis-bijo-cv.pdf" target="_blank">Download full CV (PDF) &darr;</a>
   </div>
 </section>
 
@@ -468,6 +598,40 @@ footer{background:var(--ink);padding:2.5rem;text-align:center}
         <p>I talk at conferences and run workshops on career growth, engineering culture, and building teams that people actually want to be part of.</p>
         <a href="#contact" class="scard-link">Invite me along →</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="mentorship-detail">
+  <div class="mentorship-grid">
+    <div class="who-box">
+      <h3>Who I work with</h3>
+      <ul class="who-list">
+        <li>Engineers preparing for technical interviews</li>
+        <li>International professionals navigating UK visa sponsorship</li>
+        <li>Developers going for their first senior or lead role</li>
+        <li>Career-changers moving into software engineering</li>
+        <li>Engineers thinking about their next move but unsure where to start</li>
+      </ul>
+      <a href="https://mentorcruise.com/mentor/dennisbijo/" target="_blank" rel="noopener" class="btn btn-fill" style="margin-top:1rem;font-size:13px">Book on MentorCruise →</a>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>How does a mentorship session work?</summary>
+        <div class="faq-body">We start with a free intro call to understand where you are and what you're trying to achieve. From there, we meet regularly (usually 1-3 times a month) via video call. Between sessions, you can message me with questions any time. It's structured enough to make progress, flexible enough to adapt to your life.</div>
+      </details>
+      <details>
+        <summary>Do I need to be a senior engineer?</summary>
+        <div class="faq-body">Not at all. I work with engineers at every stage: juniors figuring out their first role, mid-levels preparing for promotion, and seniors thinking about leadership. If you're willing to put in the work, we'll find the right approach together.</div>
+      </details>
+      <details>
+        <summary>Can you help with UK visa sponsorship?</summary>
+        <div class="faq-body">Yes. I've been through the visa sponsorship process twice myself, so I know how stressful and confusing it can be. I can help you target companies that sponsor, prepare your applications, and navigate the process with confidence. It's one of my most requested topics.</div>
+      </details>
+      <details>
+        <summary>What if I just need a one-off session?</summary>
+        <div class="faq-body">That works too. I offer single sessions for resume reviews, portfolio feedback, mock interviews, and general career advice. No commitment required. Check out the options on my MentorCruise profile.</div>
+      </details>
     </div>
   </div>
 </section>
